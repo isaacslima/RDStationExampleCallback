@@ -8,12 +8,26 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'App',
   data: () => ({
     //
   }),
-  methods: {
-  }
+  mounted () {
+    let code = this.$route.query.code;
+    let url = `http://localhost:54660/weatherforecast`
+
+    axios.post(url, code)
+    .then(res => {
+        console.log(res);
+    })
+    .catch((error) => {
+      console.log(error); 
+    })
+    .finally(() => {});
+    
+  },
 };
 </script>
