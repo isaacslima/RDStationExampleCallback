@@ -12,7 +12,7 @@
 import axios from "axios";
 
 export default {
-  name: 'HelloWorld',
+  name: 'Main',
 
   data: () => ({
     clienteId: "9eca469f-fe26-42bf-9c05-0ae6dfde2b40",
