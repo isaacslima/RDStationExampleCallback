@@ -2,17 +2,34 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        <v-btn>Teste auth</v-btn>
+        <v-btn @click="callback()">Teste auth</v-btn>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'HelloWorld',
+import axios from "axios";
 
-    data: () => ({
-    }),
+export default {
+  name: 'HelloWorld',
+
+  data: () => ({
+    clienteId: "9eca469f-fe26-42bf-9c05-0ae6dfde2b40",
+    redirectUrl: "https://rdstationcallback.web.app/callback"
+  }),
+  methods: {
+    callback () {
+      let url = `https://api.rd.services/auth/dialog?client_id=${this.clienteId}&redirect_url=${this.redirectUrl}`
+      axios.get(url)
+      .then(res => {
+          console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {});
+    }
   }
+}
 </script>
